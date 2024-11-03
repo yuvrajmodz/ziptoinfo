@@ -1,0 +1,14 @@
+# render.yaml
+
+services:
+  - type: web
+    name: zipinfo-flask-api
+    env: python
+    region: oregon  # Choose the closest region to your users
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    envVars:
+      - key: PORT
+        value: "5003"
+    healthCheckPath: "/zipinfo?zipcode=110001"
+    plan: free  # Change to 'starter' or another plan if necessary
